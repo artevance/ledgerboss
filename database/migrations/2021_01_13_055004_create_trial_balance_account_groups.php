@@ -15,8 +15,8 @@ class CreateTrialBalanceAccountGroups extends Migration
     {
         Schema::create('trial_balance_account_groups', function (Blueprint $table) {
             $table->id();
-            $table->ref();
-            $table->name();
+            $table->string('ref', 100)->unique();
+            $table->string('name', 200);
         });
     }
 

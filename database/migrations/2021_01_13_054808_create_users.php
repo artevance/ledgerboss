@@ -15,9 +15,9 @@ class CreateUsers extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->username();
-            $table->password();
-            $table->fullName();
+            $table->string('username', 200)->unique();
+            $table->string('password', 400);
+            $table->string('full_name', 400);
             $table->timestamps();
         });
     }

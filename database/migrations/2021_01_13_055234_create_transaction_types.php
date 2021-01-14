@@ -15,8 +15,9 @@ class CreateTransactionTypes extends Migration
     {
         Schema::create('transaction_types', function (Blueprint $table) {
             $table->id();
-            $table->code();
-            $table->name();
+            $table->string('code', 25)->unique();
+            $table->string('name');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
         });

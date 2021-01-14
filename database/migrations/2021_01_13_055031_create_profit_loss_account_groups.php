@@ -15,7 +15,8 @@ class CreateProfitLossAccountGroups extends Migration
     {
         Schema::create('profit_loss_account_groups', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('ref', 100)->unique();
+            $table->string('name', 200);
         });
     }
 

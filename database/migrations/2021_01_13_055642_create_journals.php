@@ -15,10 +15,10 @@ class CreateJournals extends Migration
     {
         Schema::create('journals', function (Blueprint $table) {
             $table->id();
-            $table->user();
-            $table->standarizedDate('transaction_date');
-            $table->memo();
-            $table->locked();
+            $table->foreignId('user_id')->constrained();
+            $table->date('transaction_date');
+            $table->string('memo', 1000);
+            $table->boolean('locked');
             $table->timestamps();
             $table->softDeletes();
         });

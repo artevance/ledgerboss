@@ -15,12 +15,12 @@ class CreateAccounts extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->code();
-            $table->name();
-            $table->user();
-            $table->account(true, 'parent_account_id');
-            $table->trialBalanceAccountGroup(true);
-            $table->profitLossAccountGroup(true);
+            $table->string('code', 25)->unique();
+            $table->string('name');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('parent_account_id')->nullable()->constrained('accounts');
+            $table->foreignId('trial_balance_account_group_id')->constrained();
+            $table->foreignId('profit_loss_account_group_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
         });

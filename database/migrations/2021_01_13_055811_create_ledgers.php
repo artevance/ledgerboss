@@ -15,12 +15,13 @@ class CreateLedgers extends Migration
     {
         Schema::create('ledgers', function (Blueprint $table) {
             $table->id();
-            $table->journal();
-            $table->account();
-            $table->standarizedDecimal('debit')->nullable();
-            $table->standarizedDecimal('credit')->nullable();
-            $table->note();
+            $table->foreignId('journal_id')->constrained();
+            $table->foreignId('account_id')->constrained();
+            $table->decimal('debit', 20, 4)->nullable();
+            $table->decimal('crebit', 20, 4)->nullable();
+            $table->string('note', 500);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

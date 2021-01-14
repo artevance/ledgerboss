@@ -18,6 +18,7 @@ class CreateJournals extends Migration
             $table->user();
             $table->standarizedDate('transaction_date');
             $table->memo();
+            $table->locked();
             $table->timestamps();
             $table->softDeletes();
         });
